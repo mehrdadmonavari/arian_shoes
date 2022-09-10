@@ -1,0 +1,55 @@
+@import url("/src/fontiran.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+   body {
+      @apply bg-gray-50;
+   }
+}
+
+input[type="range"] {
+   -webkit-appearance: none;
+}
+
+input[type="number"] {
+   -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+   height: 17px;
+   width: 17px;
+   border-radius: 50%;
+   pointer-events: auto;
+   -webkit-appearance: none;
+   background-color: #8b5cf6;
+}
+
+input[type="range"]::-moz-range-thumb {
+   height: 17px;
+   width: 17px;
+   border: none;
+   border-radius: 50%;
+   pointer-events: auto;
+   -moz-appearance: none;
+   background-color: #8b5cf6;
+}
+
+body {
+   margin: 0;
+   font-family: -apple-system, BlinkMacSystemFont, "iranyekan", "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
