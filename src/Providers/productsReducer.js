@@ -1,6 +1,10 @@
 import { initialState } from "./ProductsProvider";
 
 const SET_FILTER = "setFilter";
+const SORT_BY_LOWEST_PRICE = "sortLowestPrice";
+const SORT_BY_HIGHEST_PRICE = "sortHighestPrice";
+const SORT_BY_BIGGEST_DISCOUNT = "sortBiggestDiscount";
+const SORT_BY_MOST_POPULAR = "sortMostPopular";
 const RESETE_PRODUCTS = "resetFilter";
 
 const productsReducer = (state, action) => {
@@ -37,6 +41,48 @@ const productsReducer = (state, action) => {
          } else {
             return initialState;
          }
+      }
+      case SORT_BY_LOWEST_PRICE: {
+         let sortedProducts = [...state];
+         sortedProducts = sortedProducts.sort((a, b) => {
+            if (a.offPrice < b.offPrice) {
+               return -1;
+            }
+            if (a.offPrice > b.offPrice) {
+               return 1;
+            }
+            return 0;
+         });
+         return sortedProducts;
+      }
+      case SORT_BY_HIGHEST_PRICE: {
+         let sortedProducts = [...state];
+         sortedProducts = sortedProducts.sort((a, b) => {
+            if (a.offPrice > b.offPrice) {
+               return -1;
+            }
+            if (a.offPrice < b.offPrice) {
+               return 1;
+            }
+            return 0;
+         });
+         return sortedProducts;
+      }
+      case SORT_BY_BIGGEST_DISCOUNT: {
+         let sortedProducts = [...state];
+         sortedProducts = sortedProducts.sort((a, b) => {
+            if (a.price - a.offPrice > b.price - b.offPrice) {
+               return -1;
+            }
+            if (a.price - a.offPrice < b.price - b.offPrice) {
+               return 1;
+            }
+            return 0;
+         });
+         return sortedProducts;
+      }
+      case SORT_BY_MOST_POPULAR: {
+         return state;
       }
       case RESETE_PRODUCTS: {
          return initialState;

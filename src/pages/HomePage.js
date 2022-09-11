@@ -1,6 +1,7 @@
 import AdvertisementBanners from "../components/AdvertisementBanners/AdvertisementBanners";
 import Filter from "../components/Filter/Filter";
 import Products from "../components/Products/Products";
+import SortAndSearch from "../components/SortAndSearch/SortAndSearch";
 
 const HomePage = () => {
    return (
@@ -10,6 +11,7 @@ const HomePage = () => {
             <AdvertisementBanners />
          </section>
          <section className="col-span-12 md:col-span-8 lg:col-span-9">
+            <SortAndSearch />
             <Products />
          </section>
       </section>
