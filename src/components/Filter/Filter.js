@@ -3,7 +3,7 @@ import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { ImTree } from "react-icons/im";
 import { IoPricetags } from "react-icons/io5";
 import FilterItem from "../FilterItem/FilterItem";
-import { useProductsActions } from "../../Providers/ProductsProvider";
+import { useProducts, useProductsActions } from "../../Providers/ProductsProvider";
 import FilterItemCheckbox from "../FilterItemCheckbox/FilterItemCheckbox";
 import FilterItemRange from "../FilterItemRange/FilterItemRange";
 
@@ -14,6 +14,7 @@ const Filter = () => {
    });
    const [isFilterActive, setIsFilterActive] = useState(false);
    const [resetRange, setResetRange] = useState(false);
+   const { sort } = useProducts();
    const productDispatcher = useProductsActions();
 
    const changeFilterHandler = ({ name, value }) => {
@@ -42,6 +43,9 @@ const Filter = () => {
          filterItems.price.to !== "2000000"
       ) {
          productDispatcher({ type: "setFilter", payload: filterItems });
+         if (sort !== "") {
+            productDispatcher({ type: sort });
+         }
       }
    };
 

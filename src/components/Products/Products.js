@@ -4,7 +4,7 @@ import { useProducts } from "../../Providers/ProductsProvider";
 import Product from "../Product/Product";
 
 const Products = () => {
-   const products = useProducts();
+   const { data } = useProducts();
    const { cart } = useCart();
    const cartDispatcher = useCartActions();
 
@@ -17,14 +17,18 @@ const Products = () => {
 
    return (
       <section className="grid grid-cols-6 gap-4">
-         {products.map((product) => (
-            <Product
-               key={product.id}
-               product={product}
-               cart={cart}
-               onAddToCart={addToCartHandler}
-            />
-         ))}
+         {data.length > 0 ? (
+            data.map((product) => (
+               <Product
+                  key={product.id}
+                  product={product}
+                  cart={cart}
+                  onAddToCart={addToCartHandler}
+               />
+            ))
+         ) : (
+            <div className="col-span-6 flex justify-center items-center p-4 text-base font-medium text-gray-600 bg-gray-200 border border-gray-600 rounded-lg">کالای مورد نظر شما موجود نمیباشد !</div>
+         )}
       </section>
    );
 };
